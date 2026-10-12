@@ -1,7 +1,14 @@
-from django.urls import path
+from django.shortcuts import render
 
-from .views import es_if
+def es_if(request):
+    return render(request, "seconda_app/es_if.html")
 
-urlpatterns = [
-	path("es_if", es_if, name="es_if"),
-]
+def if_else_elif(request):
+    return render(request, "seconda_app/if_else_elif.html")
+
+def index(request):
+    return render(request, "seconda_app/index.html")
+
+
+
+    

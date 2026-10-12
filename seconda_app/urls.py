@@ -1,10 +1,11 @@
-from django.contrib import admin
-from django.urls import path, include
-from primo_progetto.views import index
+from django.urls import path
+
+from .views import es_if, if_else_elif, index
+
+app_name="seconda_app"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('prima_app/', include("prima_app.urls",namespace="prima_app")),
-    path('', index, name="index"),
-    path('seconda_app/', include("seconda_app.urls",namespace="seconda_app"))
+	path("es_if", es_if, name="es_if"),
+	path('', index, name='index'),
+	path("if_else_elif", if_else_elif, name="if_else_elif"),
 ]
