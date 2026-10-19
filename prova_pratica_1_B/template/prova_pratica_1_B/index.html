@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %} {{ block.super }} | Index {% endblock title %}
+
+{% block content %}
+    <ol>
+        <li><a href="/">index</a></li>
+        <li><a href="{% url 'prova_pratica_1_B:index' %}">massimo</a></li>
+        <li><a href="{% url 'prova_pratica_1_B:if_else_elif' %}">pari</a></li>
+        <li><a href="{% url 'prova_pratica_1_B:es_if' %}">studenti</a></li>
+    </ol>
+{% endblock content %}

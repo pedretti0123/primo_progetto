@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{block.super}} | Pari
+{% endblock title %}
+
+{% block content %}
+    <p><i>Lista di numeri:</i></p>
+
+    {% for x in list2 %}
+        {% if x|divisibleby:2 %}
+            <p><i>{{x}} è pari</i></p>
+        {% else %}
+            <p><i>{{x}} è dispari</i></p>
+        {% endif %}
+    {% endfor %} 
+    
+{% endblock content %}
