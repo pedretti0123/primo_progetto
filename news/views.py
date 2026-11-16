@@ -29,4 +29,17 @@ def articoloDetailView(request, pk):
     articolo = get_object_or_404(Articolo, pk=pk)
     context = {'articolo': articolo}
     return render(request, 'news/articoloDetailView.html', context)
-    
+
+
+def lista_articoli(request, pk=None):
+    if pk == None:
+        articoli = Articolo.objects.all()
+        
+    else:
+
+        articoli = Articolo.objects.filter(giornalista_id=pk)
+
+    context = {
+        "articoli": articoli,
+    }
+    return render(request, "lista_articoli.html", context)
