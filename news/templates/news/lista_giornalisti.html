@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+    Articoli e Giornalisti
+{% endblock title %}
+{% block content %}
+    {% for giornalista in giornalisti %}
+        <a href="{% url 'news:giornalistaDetailView' giornalista.id %}">{{ giornalista.cognome }} {{ giornalista.nome }}</a>
+        <hr>
+    {% endfor %}
+
+{% endblock content %}

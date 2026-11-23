@@ -68,6 +68,12 @@ def queryBase(request):
     ultimi = Articolo.objects.order_by('-data')[:5]
     articoli_minime_visualizzazioni = Articolo.objects.filter(visualizzazioni__gte=100)
     articoli_parola = Articolo.objects.filter(titolo__icontains='importante')
+    
+    
+    
+    
+    
+    
     articoli_mese_anno = Articolo.objects.filter(data__month=1, data__year=2023)
     giornalisti_con_articoli_popolari = Giornalista.objects.filter(
         articoli__visualizzazioni__gte=100
@@ -111,3 +117,20 @@ def queryBase(request):
         'articoli_con_not': articoli_con_not,
     }
     return render(request, 'news/query.html', context)
+
+def giornalistaDetailView(request, pk):
+    giornalista = get_object_or_404(Giornalista, pk=pk)
+    if pk==None:
+        articoli = Articolo.objects.all()
+    else:
+        articoli = Articolo.objects.filter(giornalista=giornalista)
+    context = {'giornalista': giornalista, 'articoli': articoli}
+    return render(request, 'news/giornalista_detail.html', context)
+
+def index_news(request):
+    return render(request, 'news/index_news.html')
+
+def lista_giornalisti(request):
+    giornalisti = Giornalista.objects.all()
+    context = {'giornalisti': giornalisti}
+    return render(request, 'news/lista_giornalisti.html', context)
